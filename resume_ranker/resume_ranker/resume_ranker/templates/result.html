@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Ranking Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .resume {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .matching-percentage {
+            font-weight: bold;
+            color: #4CAF50; /* Green */
+            font-size: 18px;
+        }
+
+        .summary {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Resume Ranking Results</h1>
+
+    <div class="result">
+        {% if ranked_resumes %}
+            {% for resume in ranked_resumes %}
+                <div class="resume">
+                    <h3>{{ resume[0].filename }}</h3>
+                    <p>Matching Percentage: <span class="matching-percentage">{{ resume[1] }}%</span></p>
+                    <p class="summary">{{ resume[2] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No resumes ranked yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
